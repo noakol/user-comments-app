@@ -10,10 +10,3 @@ first clone the src code
 $ npm i -g serve
 $ serve -s build
 ```
-
-For production environments...
-
-```sh
-$ npm install --production
-$ NODE_ENV=production node app
-```
