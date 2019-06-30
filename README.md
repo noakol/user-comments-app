@@ -1,8 +1,8 @@
 # User Comments App
 This app present a comments feed 
-the App server was deplay to Heroku using mlab with moongo db 
 
 ### Server
+The App server was deplay to Heroku using mlab with moongo db 
 https://github.com/noakol/user-comments
 ### Run Web App
 first clone the src code 
