@@ -1,5 +1,5 @@
 # User Comments App
-This app present a comments feed 
+This  Reactjs application that present a comments feed 
 
 ### Server
 The App server was deplay to Heroku using mlab with moongo db 
