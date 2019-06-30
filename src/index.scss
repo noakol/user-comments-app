@@ -1,0 +1,230 @@
+$main-backround-color: #f0f2f5;
+$button-color: #307FBD;
+$title-color: #307FBD;
+$feed-background-color: white;
+
+#root {
+  margin: 0;
+  background-color: #307fe2;
+  height: 100%;
+}
+
+.cf-container {
+  background-color: $main-backround-color;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+}
+
+.cf-view {
+  display: flex;
+  flex-direction: column;
+  width: 420px;
+  height: 100%;
+  background-color: $feed-background-color;
+  border-radius: 5px;
+  overflow: hidden;
+  .cf-title {
+    height: 50px;
+    margin: 0;
+    background-color: $button-color;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 5px;
+    h3 {
+      margin: auto;
+      color: white;
+      font-size: 20px;
+      align-self: center;
+    }
+  }
+  .cf-feed {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .ds-search__input {
+      margin: 10px 15px;
+      padding-left: 5px;
+      line-height: 1.3;
+      color: black;
+      border: 1px solid rgb(169, 169, 169);;
+
+    }
+    .cf-error-message {
+      color: gray;
+      margin: 10px 15px;
+    }
+    .cf-comments {
+      box-sizing: border-box;
+      padding: 0 20px;
+      height: 100%;
+      overflow-y: auto;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 7px;
+  
+      .cf-message-container {
+        color: black;
+        width: 100%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin-bottom: 20px;
+        background-color: #e8eef2;
+        flex-direction: column;
+        .cf-message {
+          font-size: 14px;
+          line-height: 1.3;
+          min-height: 42px;
+          padding: 10px 0;
+          position: relative;
+          width: calc(100% - 30px);
+          word-break: break-all;
+          margin-bottom: 0;
+          display: flex;
+          .cf-avatar img{
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            align-self: flex-start;
+            flex: 0 0 auto;
+            margin-right: 15px;
+          }
+          .cf-text-container {
+            display: flex;
+            flex-direction: column;
+            font-size: 14px;
+            width: 80%;
+            word-wrap: break-word;
+          }
+          .cf-username {
+            font-weight: bold;
+          }
+        }
+      }    
+    }
+  }
+  .cf-form-container {
+    background-color: #e1e6ed;
+    .cf-form {
+      padding: 10px 15px;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.3;
+      input {
+        padding-left: 5px;
+        line-height: 1.3;
+        margin-bottom: 7px;
+        color: black;
+        border: 1px solid rgb(169, 169, 169);;
+        ::placeholder {
+          margin-left: 5px;
+        }
+      }
+      label {
+        color: red;
+        margin-bottom: 7px;
+      }
+      textarea {
+        margin-bottom: 14px;
+        padding-left: 5px;
+      }
+      input[type="submit"] {
+        border-radius: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: $button-color;
+        color: white;
+        width: 25%;
+        margin-left: auto;
+        border: none;
+      }
+      input[type="submit"]:hover {
+        background-color: transparent;
+      }
+      input[type="submit"]:disabled {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.loader-wrapper {
+  height: 100%;
+  width: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 102;
+
+  .loader {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      font-size: 10px;
+      transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+
+      &:before,
+      &:after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          animation: rounding-circels 1s linear infinite;
+          width: 6em;
+          height: 6em;
+          border-radius: 50%;
+          background: lightgray;
+      }
+
+      &:after {
+          animation-delay: -0.5s;
+          background: rgb(7, 5, 105);
+          ;
+      }
+
+      & .hide {
+          display: none;
+      }
+  }
+  &.hide {
+      display: none;
+  }
+}
+
+
+@keyframes rounding-circels {
+
+  0%,
+  100% {
+      animation-timing-function: cubic-bezier(0.2, 0, 0.8, 1);
+  }
+
+  50% {
+      animation-timing-function: cubic-bezier(0, 0.2, 1, 0.8);
+  }
+
+  0% {
+      transform: rotate(0deg) translate(0, -20px) scale(0);
+  }
+
+  50% {
+      transform: rotate(180deg) translate(0, -20px) scale(1);
+  }
+
+  100% {
+      transform: rotate(360deg) translate(0, -20px) scale(0);
+  }
+}
