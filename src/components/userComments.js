@@ -44,8 +44,7 @@ export default class CommentFeed extends Component {
         this.comments.current.scrollTop = 0;
     }
 
-    handleAddMessage = async (e) => {
-        e.preventDefault();
+    handleAddMessage = async () => {
         const text = this.message.value;
         const username = this.email.value;
         const {showLoader, hideLoader} = this.props;
@@ -98,9 +97,16 @@ export default class CommentFeed extends Component {
     }
 
     validateEmailInput = (e) => {
+        e.preventDefault();
+        const isValidEmail = this.email.value && Utils.validateEmailInput(this.email.value);
+
         this.setState({
-            isValidEmail: Utils.validateEmailInput(e.target.value)
+            isValidEmail
         });
+        if (isValidEmail) {
+            this.handleAddMessage();
+        }
+        
     }
     
     render() {
@@ -111,7 +117,7 @@ export default class CommentFeed extends Component {
                     <h3>Comments Feed</h3>
                 </div>
                 <div className="cf-form-container">
-                    <form className="cf-form" onSubmit={this.handleAddMessage}>
+                    <form className="cf-form" onSubmit={this.validateEmailInput}>
                         <input 
                             id="emailInput"
                             type="text" 
@@ -119,13 +125,15 @@ export default class CommentFeed extends Component {
                             ref={(input) => {this.email = input}}
                             onBlur={this.validateEmailInput}
                             placeholder="Email" />
-                        <label for="emailInput">{isValidEmail ? '' : 'invalid email formate'}</label>
+                        {!isValidEmail && <label for="emailInput">invalid email formate</label>}
                         <textarea 
                             rows="5" 
                             type="text" 
                             ref={(input) => {this.message = input}} 
                             placeholder="Message" />
-                        <input type="submit" value="Submit" disabled={!isValidEmail} />
+                        <input 
+                            type="submit"
+                            value="Submit" />
                     </form>
                 </div>
                 <div className="cf-feed">
